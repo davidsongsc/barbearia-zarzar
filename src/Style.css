@@ -1,0 +1,556 @@
+/* Reset CSS */
+
+/* Configurações gerais para elementos HTML */
+html,
+body,
+div,
+span,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+/* Elementos que precisam de margens padrão resetadas */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+    display: block;
+}
+
+/* Elementos HTML5 que mostram seu estilo padrão apenas em alguns navegadores */
+mark {
+    background-color: transparent;
+    color: inherit;
+}
+
+/* Estilos para elementos que não são visíveis */
+audio,
+canvas,
+video {
+    background-color: black;
+    width: 123px;
+    height: 123px;
+    margin: 18px;
+    padding: 6px;
+    border-radius: 50%;
+    border-style: ridge;
+    border-width: 1px;
+}
+
+/* Ajuste de tamanho da fonte e espaçamento para o elemento input do IE 7 */
+input[type="search"] {
+    -webkit-appearance: textfield;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+    box-sizing: content-box;
+}
+
+/* Regras adicionais de reset específicas para navegadores */
+/* Exemplo: Adicione regras específicas para diferentes navegadores aqui */
+
+/* Estilos personalizados podem ser adicionados abaixo deste ponto */
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=UnifrakturCook:wght@700&display=swap');
+
+:root {
+    --color-basic: aliceblue;
+    --color-revert: #0f0700;
+    --color-gold: rgb(252, 252, 252);
+    --hbg-color: #0e0e0e;
+    --hdbg-color: #151515;
+    --bg-color: #404040;
+    --link-principal: #98c9f4;
+    --sanduiche: #0e0e0e;
+    --sanduiche-item: #eeeeee;
+}
+
+/* HEADER */
+.header-links {
+    display: flex;
+    text-decoration: none;
+    background-color: var(--hbg-color);
+    min-height: 35px;
+    justify-content: space-around;
+    position: relative;
+    z-index: 999;
+    align-items: center;
+}
+
+
+header {
+    background-color: var(--hdbg-color);
+    margin: 0;
+}
+
+
+
+
+.header-links .divider {
+    margin: 0 10px;
+    /* Espaço à direita e à esquerda do caractere "|" */
+    font-size: 20px;
+    /* Tamanho da fonte do caractere "|" */
+    line-height: 1;
+    /* Garante alinhamento vertical central */
+    color: var(--color-basic);
+}
+
+.header-links ul li {
+    list-style: none;
+}
+
+.header-links a {
+    position: relative;
+    /* Importante para posicionamento relativo */
+}
+
+.header-links a .hover-effect {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    opacity: 0;
+    z-index: 1;
+    transition: opacity 0.3s ease-in-out;
+}
+
+/* Classe para tornar a imagem visível */
+.visible {
+    opacity: 1;
+    transition: 0.7s ease-in-out;
+    position: relative;
+    top: 0px;
+    z-index: 1;
+}
+
+/* Classe para ocultar a imagem */
+.hidden {
+    opacity: 0;
+    position: relative;
+    top: -210px;
+    transition: 0.7s ease-in-out;
+    z-index: 1;
+
+}
+
+.texto-navegador {
+    position: relative;
+    z-index: 999;
+}
+
+li a {
+    color: var(--color-basic);
+    text-decoration: none;
+    position: relative;
+    top: 4px;
+}
+
+.header-links nav ul {
+    display: flex;
+    padding: 0 40px;
+}
+
+.navegacao {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.navegacao ul {
+    list-style: none;
+    display: flex;
+    font-size: xx-large;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.navegacao ul li {
+    padding: 0 10px;
+}
+
+.navegacao ul li a img {
+    width: 80px;
+    height: 80px;
+    background-color: aliceblue;
+    border-radius: 8px;
+    padding: 8px;
+    transition: 1.5s ease-in-out;
+    box-shadow: 2px 2px 2px black;
+    position: relative;
+    z-index: 1;
+}
+
+.navegacao ul li a img:hover {
+    background-color: goldenrod;
+    transition: .4s ease-in-out;
+}
+
+div h1 {
+    color: var(--color-basic);
+    transition: .3s ease-in-out;
+    border-radius: 4px;
+    padding: 4px;
+    text-align: center;
+    text-shadow: 1px 1px 1px black;
+}
+
+div h1:hover {
+    background-color: var(--color-basic);
+    color: var(--color-revert);
+    transition: .3s ease-in-out;
+
+}
+
+.logo h5 {
+    color: var(--color-basic);
+    transition: .3s ease-in-out;
+    border-radius: 4px;
+    padding: 4px;
+    text-align: center;
+    text-shadow: 1px 1px 1px rgb(33, 33, 33);
+    position: relative;
+    font-family: 'Pacifico', cursive;
+    font-size: xx-large;
+    top: 360px;
+
+}
+
+.logo img {
+    width: 115px;
+    margin: 18px;
+    padding: 8px;
+    border-radius: 50%;
+    border-style: ridge;
+    border-width: 1px;
+    transition: 1s ease-in-out;
+}
+
+.sanduiche {
+    background-color: var(--sanduiche);
+    width: 50px;
+    height: 50px;
+    border-radius: 5px;
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    z-index: 999;
+    box-shadow: 1px 1px;
+    transition: .7s ease-in-out;
+    bottom: 15px;
+    right: 15px;
+    cursor: pointer;
+}
+
+.sanduiche:hover,
+.sanduiche:active {
+    background-color: black;
+    transition: .7s ease-in-out;
+}
+
+.sanduiche div {
+    margin: 3px 0;
+    background-color: var(--sanduiche-item);
+    height: 7px;
+    width: 35px;
+    border-radius: 3px;
+    box-shadow: 1px 1px;
+}
+
+.sanduiche div:active {
+    background-color: #bebebe;
+    margin: 2px 0;
+    height: 5px;
+}
+
+/* PLAYER VIDEO*/
+
+video source {
+    width: 100px;
+}
+
+.home-lista-cortes ul {
+    background-color: var(--bg-color);
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    align-items: center;
+    color: #ddd7ad;
+    padding: 10px;
+}
+
+.home-lista-cortes ul li {
+    width: 400px;
+    height: 315px;
+    margin: 5px;
+    display: flex;
+    background-color: aliceblue;
+    color: var(--color-revert);
+    padding: 18px;
+    border-radius: 6px;
+    box-shadow: 1px 1px 1px var(--color-revert), -1px -1px 1px var(--color-revert);
+    transition: .7s ease-in-out;
+    justify-content: space-between;
+}
+
+.home-lista-cortes ul li:hover {
+    transform: scale(1.01);
+    box-shadow: 2px 2px 4px, -2px -2px 4px;
+    transition: .7s ease-in-out;
+}
+
+.home-lista-cortes h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: large;
+    text-indent: 15px;
+    color: black;
+    background-color: #dedede;
+}
+
+.home-lista-cortes ul li h3,
+.home-lista-cortes ul li p {
+    font-family: 'Times New Roman', Times, serif;
+    font-weight: 700;
+    font-size: x-large;
+}
+
+.home-lista-cortes ul li div h3 {
+    color: goldenrod;
+    color: var(--color-revert);
+    background-color: var(--color-basic);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+.home-lista-cortes ul li div p {
+    color: var(--color-gold);
+    background-color: var(--color-revert);
+    border-radius: 8px;
+    padding: 4px;
+}
+
+/* Agendamentos.css */
+
+.agendamento-pagina {
+    margin: 20px;
+    text-align: center;
+}
+
+.agendamento-pagina h2 {
+    font-size: 24px;
+}
+
+.agendamento-botao {
+    padding: 8px 16px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+.agendamento-botao:hover {
+    background-color: #0056b3;
+}
+
+.agendamento-tabela {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.agendamento-tabela th,
+.agendamento-tabela td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+
+.agendamento-tabela th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.agendamento-tabela td {
+    background-color: #fff;
+}
+
+.agendamento-dia {
+    /* Estilos para os dias da semana */
+}
+
+.agendamento-hora {
+    font-weight: 800;
+    font-family: cursive;
+}
+
+.agendamento-horario-disponivel {
+    /* Estilos para os horários disponíveis */
+}
+
+footer .barbearia,
+footer .redes-sociais {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #dedede;
+
+}
+
+.redes-sociais ul {
+    list-style: none;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+
+.redes-sociais ul li {
+    margin: 0 16px;
+}
+
+footer .mapa-site {
+    background-color: #000000;
+    height: 22vh;
+}
+
+.mapa-site {
+    color: #dedede;
+}
+
+.mapa-site nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.mapa-site nav ul {
+    list-style: none;
+}
+
+.mapa-site nav ul h2{
+    margin: 10px 0;
+    color: #5b5b5b;
+    font-family: 'Times New Roman', Times, serif;
+    font-size: xx-large;
+}
+
+.mapa-site nav ul li {
+    margin: 5px 0;
+}
+
+@media (max-width: 911px) {
+    video {
+        width: 355px;
+        height: 355px;
+
+    }
+
+    .sanduiche {
+        display: flex;
+    }
+
+    .header-links {
+        flex-direction: column-reverse;
+        align-items: center;
+        height: 75px;
+    }
+
+    .navegacao ul {
+        display: none;
+        flex-direction: column;
+        text-decoration: underline var(--link-principal) 1px;
+
+    }
+
+    .navegacao {
+        justify-content: center;
+
+    }
+
+    /* Adicione mais estilos para telas pequenas conforme necessário */
+}
