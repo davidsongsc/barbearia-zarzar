@@ -94,6 +94,13 @@ const Footer = () => {
                             Coloração
                         </li>
                     </ul>
+                    <ul>
+                        <h2>Contato</h2>
+                        <li>
+                            (21) 9 9876-5432
+                        </li>
+                       
+                    </ul>
                 </nav>
             </div>
         </footer>
