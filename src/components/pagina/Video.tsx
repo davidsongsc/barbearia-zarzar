@@ -1,47 +1,49 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import VimeoPlayer from '@vimeo/player';
 
 const VideoPlayer: React.FC = () => {
-    const videoRef = useRef<HTMLVideoElement | null>(null);
     const [isVideoEnded, setVideoEnded] = useState(false);
-    const [videoWidth, setVideoWidth] = useState(120); // Defina o tamanho inicial
-    const [videoHeight, setVideoHeight] = useState(120); // Defina o tamanho inicial
+    const [videoWidth, setVideoWidth] = useState(640); // Defina o tamanho inicial
+    const [videoHeight, setVideoHeight] = useState(360); // Defina o tamanho inicial
+    let vimeoPlayer: any = null; // Use any para evitar erros de tipo
 
     useEffect(() => {
-        // Verificar se o elemento de vídeo existe
-        if (videoRef.current) {
-            // Adicionar um ouvinte de evento para detectar quando o vídeo termina
-            const videoElement = videoRef.current;
+        // Crie um novo player do Vimeo quando o componente montar
+        vimeoPlayer = new VimeoPlayer('vimeo-player', {
+            id: parseInt('869557564', 10),
+            autoplay: true,
+            muted: true,
+            controls: false,
+            loop: true, // Ative o loop de reprodução
+            
+        });
 
-            const handleVideoEnded = () => {
-                // Pausar a reprodução quando o vídeo terminar
-                videoElement.pause();
+        // Adicione um ouvinte de evento para detectar quando o vídeo termina
+        vimeoPlayer.on('ended', () => {
+            // Alterar o tamanho do vídeo (por exemplo, para 200x200)
+            setVideoWidth(200);
+            setVideoHeight(200);
 
-                // Alterar o tamanho do vídeo (por exemplo, para 200x200)
-                setVideoWidth(200);
-                setVideoHeight(200);
+            // Marcar o vídeo como terminado
+            setVideoEnded(true);
+        });
 
-                // Marcar o vídeo como terminado
-                setVideoEnded(true);
-            };
-
-            videoElement.addEventListener('ended', handleVideoEnded);
-
-            // Remover o ouvinte de evento quando o componente for desmontado
-            return () => {
-                videoElement.removeEventListener('ended', handleVideoEnded);
-            };
-        }
+        // Remova o ouvinte de evento quando o componente for desmontado
+        return () => {
+            if (vimeoPlayer) {
+                vimeoPlayer.off('ended');
+                vimeoPlayer.destroy().catch((error: Error) => {
+                    console.error('Erro ao descarregar o player do Vimeo:', error);
+                });
+            }
+        };
     }, []);
 
     return (
         <>
-            <video width={videoWidth} height={videoHeight} autoPlay muted preload="auto" ref={videoRef}>
-                {/* Adicione a URL do vídeo aqui */}
-                <source src="https://dagesico.pythonanywhere.com/static/img/barbearia.mp4" type="video/mp4" />
-                Seu navegador não suporta o elemento de vídeo.
-            </video>
+            <div id="vimeo-player"></div>
             {isVideoEnded && (
-                <p>Confira este e outros cortes em nossas midias sociais.</p>
+                <p>Confira este e outros cortes em nossas mídias sociais.</p>
             )}
         </>
     );
