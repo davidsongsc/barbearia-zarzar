@@ -16,25 +16,25 @@ const Footer = () => {
                     <nav>
                         <ul>
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaTiktok color='black' size={40} />
                                 </a>
                             </li>
 
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaFacebook color='black' size={40} />
                                 </a>
                             </li>
 
                             <li>
-                                <a href="/contato">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaInstagram color='black' size={40} />
                                 </a>
                             </li>
 
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaYoutube color='black' size={40} />
                                 </a>
                             </li>
