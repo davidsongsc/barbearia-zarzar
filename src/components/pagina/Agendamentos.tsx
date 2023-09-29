@@ -93,7 +93,7 @@ const Agendamentos: React.FC = () => {
         <>
             <Galeria />
             <div className="agendamento-pagina">
-                <h2>Agendamentos</h2>
+                <h2>Agenda</h2>
                 <button
                     className="agendamento-botao"
                     onClick={() => setMostrarTodasAsSemanas(!mostrarTodasAsSemanas)}

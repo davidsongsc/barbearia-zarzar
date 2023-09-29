@@ -49,23 +49,25 @@ const Home = () => {
             <h2>Estilo do corte</h2>
             <ul>
                 {estilosCortes.map((estilo) => (
-                    <Link to="/agendamentos">
-                        <li key={estilo.id} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
+
+                    <li key={estilo.id} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
+                        <Link to="/agendamentos">
                             <div>
                                 <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
                             </div>
                             <div>
                                 <h3>R$ {estilo.valor}</h3>
                             </div>
+                        </Link>
 
 
 
-                        </li>
-                    </Link>
-                    
+                    </li>
+
+
                 ))}
             </ul>
-        </div>
+        </div >
     );
 };
 

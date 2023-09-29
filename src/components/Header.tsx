@@ -56,7 +56,6 @@ const Header: React.FC = () => {
                 <nav>
                     <ul>
                         <li>
-
                             <Link to={"/"}>
                                 Inicio
                             </Link>
@@ -66,6 +65,12 @@ const Header: React.FC = () => {
 
                             <Link to={"/agendamentos"}>
                                 Agendamentos
+                            </Link>
+                        </li>
+                        <div className="divider">|</div>
+                        <li>
+                            <Link to={"/"}>
+                                Galeria
                             </Link>
                         </li>
                         <div className="divider">|</div>
