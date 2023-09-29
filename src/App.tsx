@@ -11,12 +11,13 @@ import TelaCarregamento from './components/corpo/TelaCarregamento';
 const App: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    // Simule um carregamento demorado (você pode substituir isso por uma chamada à API real)
+    const minDelay = 800; // 1 segundo em milissegundos
+    const maxDelay = 3900; // 4 segundos em milissegundos
+    const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
+    // Inicie o carregamento com o atraso aleatório
     setTimeout(() => {
       setLoading(false);
-    }, 2700); // Por exemplo, após 2 segundos
-
-    // Outras lógicas do componente Agendamentos
+    }, randomDelay);
   }, []);
   return (
     <>
