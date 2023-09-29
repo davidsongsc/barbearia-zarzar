@@ -103,6 +103,15 @@ const Footer = () => {
                     </ul>
                 </nav>
             </div>
+            <div className='galeria'>
+                <main>
+                    <section>
+                        <aside>
+                            
+                        </aside>
+                    </section>
+                </main>
+            </div>
         </footer>
     );
 };
