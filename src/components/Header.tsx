@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { FaTiktok, FaFacebook, FaInstagram, FaYoutube, FaSearch } from 'react-icons/fa';
 import VideoPlayer from './pagina/Video';
+import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const [isImageVisible, setImageVisible] = useState(false);
@@ -26,6 +27,7 @@ const Header: React.FC = () => {
                     <nav>
                         <ul>
                             <li>
+
                                 <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaTiktok />
                                 </a>
@@ -54,18 +56,21 @@ const Header: React.FC = () => {
                 <nav>
                     <ul>
                         <li>
-                            <a href="/agendamentos">
 
-                                Agendamentos
-                            </a>
+                            <Link to={"/"}>
+                                Inicio
+                            </Link>
                         </li>
                         <div className="divider">|</div>
                         <li>
-                            <a href="/">
 
-                                Galeria</a>
+                            <Link to={"/agendamentos"}>
+                                Agendamentos
+                            </Link>
                         </li>
                         <div className="divider">|</div>
+
+
                         <li>
                             <a href="/contato">Contato</a>
                         </li>
@@ -87,7 +92,7 @@ const Header: React.FC = () => {
                     <div className="logo">
 
                         <img src="https://img.freepik.com/vetores-premium/design-de-logotipo-de-barbearia-de-luxo_313044-6.jpg" alt="Barbearia Zarzar" />
-                        
+
                     </div>
 
                     <nav>
@@ -123,7 +128,7 @@ const Header: React.FC = () => {
                                     </div>
                                 </a>
                             </li>
-                     
+
                             <li>
                                 <a href="/"
                                     onMouseEnter={() => setLink4Visible(true)}

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home = () => {
     // Array de estilos de cortes
@@ -40,22 +41,28 @@ const Home = () => {
         // Adicione mais estilos de cortes conforme necessário
     ];
 
+    const handleLinkClick = () => {
+
+    }
     return (
         <div className='home-lista-cortes'>
             <h2>Estilo do corte</h2>
             <ul>
                 {estilosCortes.map((estilo) => (
-                    <li key={estilo.id} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
-                        <div>
-                            <p style={{textTransform: 'capitalize'}}>{estilo.nome}</p>
-                        </div>
-                        <div>
-                            <h3>R$ {estilo.valor}</h3>
-                        </div>
+                    <Link to="/agendamentos">
+                        <li key={estilo.id} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
+                            <div>
+                                <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
+                            </div>
+                            <div>
+                                <h3>R$ {estilo.valor}</h3>
+                            </div>
 
 
 
-                    </li>
+                        </li>
+                    </Link>
+                    
                 ))}
             </ul>
         </div>
