@@ -26,25 +26,25 @@ const Header: React.FC = () => {
                     <nav>
                         <ul>
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaTiktok />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaFacebook />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
-                                <a href="/contato">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaInstagram />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
-                                <a href="/">
+                                <a href="https://www.instagram.com/tz_zarzar/">
                                     <FaYoutube />
                                 </a>
                             </li>
