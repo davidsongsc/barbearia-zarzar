@@ -1,11 +1,13 @@
 import React from 'react';
 import VideoPlayer from './pagina/Video';
 import { FaTiktok, FaFacebook, FaInstagram, FaYoutube, FaSearch } from 'react-icons/fa';
+import TelaCarregamento from './corpo/TelaCarregamento';
+
 const Footer = () => {
 
     return (
         <footer>
-            <div className='barbearia'>
+            <div className={`barbearia`}>
                 <h1>Zarzar Cortes</h1>
                 <VideoPlayer />
             </div>
@@ -99,7 +101,7 @@ const Footer = () => {
                         <li>
                             (21) 9 9876-5432
                         </li>
-                       
+
                     </ul>
                 </nav>
             </div>
@@ -107,7 +109,7 @@ const Footer = () => {
                 <main>
                     <section>
                         <aside>
-                            
+
                         </aside>
                     </section>
                 </main>

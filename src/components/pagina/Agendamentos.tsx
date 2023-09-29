@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DisponibilidadeIcones from '../corpo/Disponibilidade';
+import Galeria from './Galeria';
 
 const Agendamentos: React.FC = () => {
     const [mostrarTodasAsSemanas, setMostrarTodasAsSemanas] = useState(false);
@@ -89,42 +90,46 @@ const Agendamentos: React.FC = () => {
     }, []);
 
     return (
-        <div className="agendamento-pagina">
-            <h2>Agendamentos</h2>
-            <button
-                className="agendamento-botao"
-                onClick={() => setMostrarTodasAsSemanas(!mostrarTodasAsSemanas)}
-            >
-                {mostrarTodasAsSemanas ? 'Mostrar 4 Dias' : 'Mostrar 7 Dias'}
-            </button>
-            <table className="agendamento-tabela">
-                <thead>
-                    <tr>
-                        <th>Hora</th>
-                        {gerarProximosDias().map((dia, index) => (
-                            <th key={index} className="agendamento-dia">
-                                {diasDaSemana[dia.getDay()]} {dia.getDate()}/{dia.getMonth() + 1}
-                            </th>
-                        ))}
-                    </tr>
-                </thead>
-                <tbody>
-                    {gerarHorarios(diaAtual).map((item, index) => (
-                        <tr key={index}>
-                            <td className="agendamento-hora">{item.horario}</td>
-                            {gerarProximosDias().map((dia, indexDia) => (
-                                <td key={indexDia} className="agendamento-horario">
-                                    <DisponibilidadeIcones estado={dia.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
-                                    {/* Botão para agendar horário */}
-                                    <button onClick={() => agendarHorario(dia, item.horario)}>Agendar</button>
-                                </td>
+        <>
+            <Galeria />
+            <div className="agendamento-pagina">
+                <h2>Agendamentos</h2>
+                <button
+                    className="agendamento-botao"
+                    onClick={() => setMostrarTodasAsSemanas(!mostrarTodasAsSemanas)}
+                >
+                    {mostrarTodasAsSemanas ? 'Mostrar 4 Dias' : 'Mostrar 7 Dias'}
+                </button>
+                <table className="agendamento-tabela">
+                    <thead>
+                        <tr>
+                            <th>Hora</th>
+                            {gerarProximosDias().map((dia, index) => (
+                                <th key={index} className="agendamento-dia">
+                                    {diasDaSemana[dia.getDay()]} {dia.getDate()}/{dia.getMonth() + 1}
+                                </th>
                             ))}
                         </tr>
-                    ))}
+                    </thead>
+                    <tbody>
+                        {gerarHorarios(diaAtual).map((item, index) => (
+                            <tr key={index}>
+                                <td className="agendamento-hora">{item.horario}</td>
+                                {gerarProximosDias().map((dia, indexDia) => (
+                                    <td key={indexDia} className="agendamento-horario">
+                                        <DisponibilidadeIcones estado={dia.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
+                                        {/* Botão para agendar horário */}
+                                        <button onClick={() => agendarHorario(dia, item.horario)}>Agendar</button>
+                                    </td>
+                                ))}
+                            </tr>
+                        ))}
 
-                </tbody>
-            </table>
-        </div>
+                    </tbody>
+                </table>
+
+            </div>
+        </>
     );
 };
 

@@ -1,10 +1,12 @@
 import React from 'react';
+import VideoPlayer from '../pagina/Video';
 
 const TelaCarregamento: React.FC = () => {
+
   return (
-    <div className="loading-screen">
-      <div className="loader"></div>
-    </div>
+    <>
+    
+    </>
   );
 };
 
