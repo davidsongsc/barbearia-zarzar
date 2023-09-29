@@ -495,7 +495,7 @@ footer .redes-sociais {
 
 footer .mapa-site {
     background-color: #000000;
-    height: 22vh;
+    height: 22+vh;
 }
 
 .mapa-site {
@@ -512,7 +512,7 @@ footer .mapa-site {
     list-style: none;
 }
 
-.mapa-site nav ul h2{
+.mapa-site nav ul h2 {
     margin: 10px 0;
     color: #5b5b5b;
     font-family: 'Times New Roman', Times, serif;
@@ -528,6 +528,11 @@ footer .mapa-site {
         width: 355px;
         height: 355px;
 
+    }
+
+    .mapa-site nav {
+
+        flex-direction: column;
     }
 
     .sanduiche {
