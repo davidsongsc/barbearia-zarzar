@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import DisponibilidadeIcones from '../corpo/Disponibilidade';
+import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
+import 'react-tabs/style/react-tabs.css';
 import Galeria from './Galeria';
+
 
 const Agendamentos: React.FC = () => {
     const [mostrarTodasAsSemanas, setMostrarTodasAsSemanas] = useState(false);
@@ -46,13 +49,12 @@ const Agendamentos: React.FC = () => {
         return horarios;
     };
 
-
     // Função para gerar os próximos dias
     const gerarProximosDias = () => {
         const dataAtual = new Date();
         const dias = [dataAtual];
 
-        for (let i = 1; i < (mostrarTodasAsSemanas ? 7 : 4); i++) {
+        for (let i = 1; i < (mostrarTodasAsSemanas ? 7 : 7); i++) {
             const proximoDia = new Date(dataAtual);
             proximoDia.setDate(dataAtual.getDate() + i);
             dias.push(proximoDia);
@@ -92,42 +94,29 @@ const Agendamentos: React.FC = () => {
     return (
         <>
             <Galeria />
-            <div className="agendamento-pagina">
-                <h2>Agenda</h2>
-                <button
-                    className="agendamento-botao"
-                    onClick={() => setMostrarTodasAsSemanas(!mostrarTodasAsSemanas)}
-                >
-                    {mostrarTodasAsSemanas ? 'Mostrar 4 Dias' : 'Mostrar 7 Dias'}
-                </button>
-                <table className="agendamento-tabela">
-                    <thead>
-                        <tr>
-                            <th>Hora</th>
-                            {gerarProximosDias().map((dia, index) => (
-                                <th key={index} className="agendamento-dia">
-                                    {diasDaSemana[dia.getDay()]} {dia.getDate()}/{dia.getMonth() + 1}
-                                </th>
-                            ))}
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {gerarHorarios(diaAtual).map((item, index) => (
-                            <tr key={index}>
-                                <td className="agendamento-hora">{item.horario}</td>
-                                {gerarProximosDias().map((dia, indexDia) => (
-                                    <td key={indexDia} className="agendamento-horario">
-                                        <DisponibilidadeIcones estado={dia.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
-                                        {/* Botão para agendar horário */}
-                                        <button onClick={() => agendarHorario(dia, item.horario)}>Agendar</button>
-                                    </td>
-                                ))}
-                            </tr>
+
+            <div className="agendamento-pagina ">
+                <Tabs>
+                    <TabList className='lista-horarios-ag'>
+                        {gerarProximosDias().map((dia, index) => (
+                            <Tab key={index}>{diasDaSemana[dia.getDay()]}</Tab>
                         ))}
+                    </TabList>
+                    {gerarProximosDias().map((dia, index) => (
 
-                    </tbody>
-                </table>
-
+                        <TabPanel key={index} className="tabela-agendamentos" style={{ display: 'flex' }}>
+                            {/* Renderize os horários para o dia específico aqui */}
+                            {gerarHorarios(dia).map((item, horarioIndex) => (
+                                <div key={horarioIndex} className={`agendamento-horario ${item.disponibilidade}`}>
+                                    <p>{item.horario}</p>
+                                    <DisponibilidadeIcones estado={diaAtual.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
+                                    {/* Botão para agendar horário */}
+                                    <button onClick={() => agendarHorario(dia, item.horario)}>Agendar</button>
+                                </div>
+                            ))}
+                        </TabPanel>
+                    ))}
+                </Tabs>
             </div>
         </>
     );

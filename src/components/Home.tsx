@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import VideoPlayer from './pagina/Video';
 
 const Home = () => {
     // Array de estilos de cortes
@@ -47,31 +48,37 @@ const Home = () => {
         )
     }
     return (
-        <div className='home-lista-cortes'>
-            <h2>Estilo do corte</h2>
-            <ul>
-                {estilosCortes.map((estilo) => (
+        <>
+            <div className={`barbearia`}>
+                <h1>Zarzar Cortes</h1>
+                <VideoPlayer />
+            </div>
+            <div className='home-lista-cortes'>
+                <h2>Estilo do corte</h2>
+                <ul>
+                    {estilosCortes.map((estilo) => (
 
-                    <li key={estilo.id} onClick={handleLinkClick} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
-
-
-                        <div>
-                            <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
-                        </div>
-                        <div>
-                            <h3>R$ {estilo.valor}</h3>
-                        </div>
+                        <li key={estilo.id} onClick={handleLinkClick} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
 
 
+                            <div>
+                                <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
+                            </div>
+                            <div>
+                                <h3>R$ {estilo.valor}</h3>
+                            </div>
 
 
 
-                    </li>
 
 
-                ))}
-            </ul>
-        </div >
+                        </li>
+
+
+                    ))}
+                </ul>
+            </div >
+        </>
     );
 };
 

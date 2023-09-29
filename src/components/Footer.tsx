@@ -1,16 +1,11 @@
 import React from 'react';
-import VideoPlayer from './pagina/Video';
-import { FaTiktok, FaFacebook, FaInstagram, FaYoutube, FaSearch } from 'react-icons/fa';
-import TelaCarregamento from './corpo/TelaCarregamento';
 
+import { FaTiktok, FaFacebook, FaInstagram, FaYoutube, FaSearch } from 'react-icons/fa';
 const Footer = () => {
 
     return (
         <footer>
-            <div className={`barbearia`}>
-                <h1>Zarzar Cortes</h1>
-                <VideoPlayer />
-            </div>
+            
             <div className='redes-sociais'>
                 <div>
                     <nav>
