@@ -42,7 +42,9 @@ const Home = () => {
     ];
 
     const handleLinkClick = () => {
-
+        return (
+            <Link to="/agendamentos"></Link>
+        )
     }
     return (
         <div className='home-lista-cortes'>
@@ -50,15 +52,17 @@ const Home = () => {
             <ul>
                 {estilosCortes.map((estilo) => (
 
-                    <li key={estilo.id} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
-                        <Link to="/agendamentos">
-                            <div>
-                                <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
-                            </div>
-                            <div>
-                                <h3>R$ {estilo.valor}</h3>
-                            </div>
-                        </Link>
+                    <li key={estilo.id} onClick={handleLinkClick} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
+
+
+                        <div>
+                            <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
+                        </div>
+                        <div>
+                            <h3>R$ {estilo.valor}</h3>
+                        </div>
+
+
 
 
 

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 
 const Header: React.FC = () => {
     const [isImageVisible, setImageVisible] = useState(false);
-
+    const tamIcone = [18, 'aliceblue'];
     const handleMouseEnter = () => {
         setImageVisible(true);
     };
@@ -29,25 +29,25 @@ const Header: React.FC = () => {
                             <li>
 
                                 <a href="https://www.instagram.com/tz_zarzar/">
-                                    <FaTiktok />
+                                    <FaTiktok size={tamIcone[0]} color={String(tamIcone[1])} />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
                                 <a href="https://www.instagram.com/tz_zarzar/">
-                                    <FaFacebook />
+                                    <FaFacebook size={tamIcone[0]} color={String(tamIcone[1])} />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
                                 <a href="https://www.instagram.com/tz_zarzar/">
-                                    <FaInstagram />
+                                    <FaInstagram size={tamIcone[0]} color={String(tamIcone[1])} />
                                 </a>
                             </li>
                             <div className="divider">|</div>
                             <li>
                                 <a href="https://www.instagram.com/tz_zarzar/">
-                                    <FaYoutube />
+                                    <FaYoutube size={tamIcone[0]} color={String(tamIcone[1])} />
                                 </a>
                             </li>
                         </ul>

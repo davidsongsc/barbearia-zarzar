@@ -167,7 +167,9 @@ header {
     margin: 0;
 }
 
-
+.divider{
+    margin: 10px;
+}
 
 
 .header-links .divider {
@@ -490,8 +492,7 @@ footer .redes-sociais {
     z-index: 999;
 }
 .carregando{
-    position: absolute;
-    top: 0px;
+    transform: scale(2);
     height: 100vh;
     transition: 1s ease-in-out;
 }
@@ -657,8 +658,6 @@ footer .mapa-site {
         width: 100%;
         
       }
-      li a {
-        width: 100%;
-      }
+
     /* Adicione mais estilos para telas pequenas conforme necessário */
 }
