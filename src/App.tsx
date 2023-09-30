@@ -12,14 +12,9 @@ import ScrollToTop from './components/corpo/ScrollToTop';
 const App: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
   useEffect(() => {
-    const minDelay = 800; // 1 segundo em milissegundos
-    const maxDelay = 3900; // 4 segundos em milissegundos
-    const randomDelay = Math.random() * (maxDelay - minDelay) + minDelay;
-    // Inicie o carregamento com o atraso aleatório
-    setTimeout(() => {
-      setLoading(false);
-    }, randomDelay);
+    setLoading(false);
   }, []);
+
   return (
     <>
       <TelaCarregamento statusCarregamento={isLoading} />
@@ -27,7 +22,7 @@ const App: React.FC = () => {
         <>
           <Menu />
           <Router>
-            <ScrollToTop/>
+            <ScrollToTop />
             <Header />
             <main>
               <Routes>
