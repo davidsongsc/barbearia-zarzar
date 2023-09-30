@@ -423,7 +423,6 @@ video source {
 /* Agendamentos.css */
 
 .agendamento-pagina {
-    margin: 20px;
     text-align: center;
 }
 
@@ -732,38 +731,37 @@ footer .mapa-site {
         width: 100%;
 
     }
-    
+
     .agendamento-pagina div {
         display: flex;
-        
+
     }
 
-    .agendamento-pagina {
-        max-height: 50vh;
-        overflow-x: scroll;
-        
-    }
-    .lista-horarios-ag{
-        width: 110px;
+
+    .lista-horarios-ag {
+        width: 63px;
         font-size: large;
     }
+
     .lista-horarios-ag .react-tabs__tab--selected {
-        width: 80px;
-        height: 50px;
+        width: 35px;
+        height: 17px;
 
     }
+
     .agendamento-horario {
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        width: 50px;
-        padding: 14px 5px;
-        font-size: large;
+        width: 52px;
+        padding: 5px 5px;
+        font-size: x-large;
     }
-    .mapa-site{
+
+    .mapa-site {
         padding: 8px;
     }
-  
+
     /* Adicione mais estilos para telas pequenas conforme necessário */
 }

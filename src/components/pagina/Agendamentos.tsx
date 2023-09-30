@@ -107,11 +107,11 @@ const Agendamentos: React.FC = () => {
                         <TabPanel key={index} className="tabela-agendamentos" style={{ display: 'flex' }}>
                             {/* Renderize os horários para o dia específico aqui */}
                             {gerarHorarios(dia).map((item, horarioIndex) => (
-                                <div key={horarioIndex} className={`agendamento-horario ${item.disponibilidade}`}>
+                                <div key={horarioIndex} className={`agendamento-horario ${item.disponibilidade}`} onClick={() => agendarHorario(dia, item.horario)}>
                                     <p>{item.horario}</p>
                                     <DisponibilidadeIcones estado={diaAtual.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
                                     {/* Botão para agendar horário */}
-                                    <button onClick={() => agendarHorario(dia, item.horario)}>Agendar</button>
+                                    
                                 </div>
                             ))}
                         </TabPanel>
