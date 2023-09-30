@@ -7,6 +7,7 @@ import Menu from './components/pagina/Menu';
 import Agendamentos from './components/pagina/Agendamentos';
 import Footer from './components/Footer';
 import TelaCarregamento from './components/corpo/TelaCarregamento';
+import ScrollToTop from './components/corpo/ScrollToTop';
 
 const App: React.FC = () => {
   const [isLoading, setLoading] = useState(true);
@@ -26,6 +27,7 @@ const App: React.FC = () => {
         <>
           <Menu />
           <Router>
+            <ScrollToTop/>
             <Header />
             <main>
               <Routes>

@@ -1,12 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import VimeoPlayer from '@vimeo/player';
+import { useNavigate } from 'react-router-dom';
 
 const VideoPlayer: React.FC = () => {
+    const navigate  = useNavigate();
     const [isVideoEnded, setVideoEnded] = useState(false);
     const [videoWidth, setVideoWidth] = useState(640); // Defina o tamanho inicial
     const [videoHeight, setVideoHeight] = useState(360); // Defina o tamanho inicial
     let vimeoPlayer: any = null; // Use any para evitar erros de tipo
 
+    const handleButtonClick = () => {
+        navigate('/agendamentos'); // Navegar para a rota '/agendamentos'
+      };
+
+      
     useEffect(() => {
         // Crie um novo player do Vimeo quando o componente montar
         vimeoPlayer = new VimeoPlayer('vimeo-player', {
@@ -41,7 +48,7 @@ const VideoPlayer: React.FC = () => {
 
     return (
         <>
-            <div id="vimeo-player"></div>
+            <div id="vimeo-player" onClick={handleButtonClick}></div>
             {isVideoEnded && (
                 <p>Confira este e outros cortes em nossas mídias sociais.</p>
             )}

@@ -3,6 +3,9 @@ import DisponibilidadeIcones from '../corpo/Disponibilidade';
 import { Tab, TabList, TabPanel, Tabs } from 'react-tabs';
 import 'react-tabs/style/react-tabs.css';
 import Galeria from './Galeria';
+import IconIndisponivel from '../corpo/IconIndisponivel';
+import IconOcupado from '../corpo/IconOcupado';
+import IconDisponivel from '../corpo/IconDisponivel';
 
 
 const Agendamentos: React.FC = () => {
@@ -10,6 +13,14 @@ const Agendamentos: React.FC = () => {
     const [agendamentos, setAgendamentos] = useState<string[][]>([]); // Array de agendamentos
     const [horariosIndisponiveis, setHorariosIndisponiveis] = useState<string[]>([]); // Horários indisponíveis
     const [diaAtual, setDiaAtual] = useState(new Date()); // Obter a data atual
+    const [modalOpen, setModalOpen] = useState(false);
+    const openModal = () => {
+        setModalOpen(true);
+    };
+
+    const closeModal = () => {
+        setModalOpen(false);
+    };
 
     const diasDaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
 
@@ -17,12 +28,24 @@ const Agendamentos: React.FC = () => {
     const gerarHorarios = (diaAtual: Date) => {
         const horarios = [];
         const dataAtual = new Date(); // Obter a data e hora atual
+        const diaDaSemana = diaAtual.getDay(); // Obtém o dia da semana (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)
+        const abertura = 9; // Hora de abertura padrão
+        const diaFolgaSemana = 0;
+        const fechamentoNormal = 21;
+        const fechamentoSegunda = 12;
+        const fechamento = (diaDaSemana === diaFolgaSemana) ? fechamentoSegunda : fechamentoNormal; // Hora de fechamento: 12h para domingo, 20h para outros dias
+        const diaIndex = gerarProximosDias().findIndex((data) => data.getDate() === diaAtual.getDate());
+        const agendamentosDoDia = agendamentos[diaIndex] || [];
 
-        for (let hora = 10; hora <= 21; hora++) {
+        for (let hora = abertura; hora <= fechamento; hora++) {
             for (let minuto = 0; minuto < 60; minuto += 30) {
                 const horario = `${hora.toString().padStart(2, '0')}:${minuto.toString().padStart(2, '0')}`;
                 let disponibilidade: 'disponivel' | 'ocupado' | 'indisponivel' = 'disponivel';
-
+                if (agendamentosDoDia.includes(horario)) {
+                    disponibilidade = 'ocupado'; // Marcar como ocupado
+                } else if (horariosIndisponiveis.includes(horario)) {
+                    disponibilidade = 'indisponivel'; // Marcar como indisponível
+                }
                 // Verificar se o dia é igual ao dia atual
                 if (
                     diaAtual.getDate() === dataAtual.getDate() &&
@@ -40,14 +63,28 @@ const Agendamentos: React.FC = () => {
 
                 if (horariosIndisponiveis.includes(horario)) {
                     disponibilidade = 'indisponivel'; // Marcar como indisponível se também estiver na lista de horários indisponíveis
+                } else if (diaDaSemana === 0) {
+                    disponibilidade = 'ocupado'; // Segunda-feira: Marcar como ocupado
                 }
 
-                horarios.push({ horario, disponibilidade });
+                // Renderizar o ícone com base no estado de disponibilidade
+                let IconComponent;
+                if (disponibilidade === 'disponivel') {
+                    IconComponent = IconDisponivel;
+                } else if (disponibilidade === 'indisponivel') {
+                    IconComponent = IconIndisponivel;
+                } else {
+                    IconComponent = IconOcupado;
+                }
+
+                horarios.push({ horario, disponibilidade, Icon: <IconComponent /> });
             }
         }
 
         return horarios;
     };
+
+
 
     // Função para gerar os próximos dias
     const gerarProximosDias = () => {
@@ -71,8 +108,8 @@ const Agendamentos: React.FC = () => {
         // Encontre o índice do dia no array de datas
         const diaIndex = gerarProximosDias().findIndex((data) => data.getDate() === dia.getDate());
 
-        // Verifique se o dia é válido, se o horário não está agendado e se não está em horários indisponíveis
-        if (diaIndex !== -1 && !novosAgendamentos[diaIndex]?.includes(horario) && !horariosIndisponiveis.includes(horario)) {
+        // Verifique se o dia é válido e se o horário não está em horários indisponíveis
+        if (diaIndex !== -1 && !horariosIndisponiveis.includes(horario)) {
             // Se o array de agendamentos para o dia ainda não existir, crie-o
             if (!novosAgendamentos[diaIndex]) {
                 novosAgendamentos[diaIndex] = [];
@@ -84,6 +121,9 @@ const Agendamentos: React.FC = () => {
             // Atualize o estado de agendamentos
             setAgendamentos(novosAgendamentos);
         }
+        // Atualize o estado de agendamentos com os novos agendamentos
+        setAgendamentos(novosAgendamentos);
+
     };
 
     useEffect(() => {
@@ -107,11 +147,11 @@ const Agendamentos: React.FC = () => {
                         <TabPanel key={index} className="tabela-agendamentos" style={{ display: 'flex' }}>
                             {/* Renderize os horários para o dia específico aqui */}
                             {gerarHorarios(dia).map((item, horarioIndex) => (
-                                <div key={horarioIndex} className={`agendamento-horario ${item.disponibilidade}`} onClick={() => agendarHorario(dia, item.horario)}>
+                                <div key={horarioIndex} onClick={() => agendarHorario(dia, item.horario)} className={`agendamento-horario ${item.disponibilidade}`} >
                                     <p>{item.horario}</p>
                                     <DisponibilidadeIcones estado={diaAtual.getDate() === diaAtual.getDate() ? item.disponibilidade : 'disponivel'} />
                                     {/* Botão para agendar horário */}
-                                    
+
                                 </div>
                             ))}
                         </TabPanel>

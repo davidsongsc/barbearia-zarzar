@@ -1,8 +1,11 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import { useEffect } from 'react';
+
 import VideoPlayer from './pagina/Video';
+import { useNavigate } from 'react-router-dom';
 
 const Home = () => {
+    const navigate  = useNavigate();
+
     // Array de estilos de cortes
     const estilosCortes = [
         {
@@ -42,11 +45,10 @@ const Home = () => {
         // Adicione mais estilos de cortes conforme necessário
     ];
 
-    const handleLinkClick = () => {
-        return (
-            <Link to="/agendamentos"></Link>
-        )
-    }
+    const handleClick = () => {
+        navigate('/agendamentos'); // Navegar para a rota '/agendamentos'
+      };
+
     return (
         <>
             <div className={`barbearia`}>
@@ -58,23 +60,14 @@ const Home = () => {
                 <ul>
                     {estilosCortes.map((estilo) => (
 
-                        <li key={estilo.id} onClick={handleLinkClick} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
-
-
+                        <li key={estilo.id}  onClick={handleClick} style={{ backgroundImage: `url(${estilo.imagem})`, backgroundSize: 'cover' }}>
                             <div>
                                 <p style={{ textTransform: 'capitalize' }}>{estilo.nome}</p>
                             </div>
                             <div>
                                 <h3>R$ {estilo.valor}</h3>
                             </div>
-
-
-
-
-
                         </li>
-
-
                     ))}
                 </ul>
             </div >

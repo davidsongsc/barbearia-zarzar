@@ -410,7 +410,8 @@ video source {
     color: var(--color-revert);
     background-color: var(--color-basic);
     border-radius: 8px;
-    padding: 4px;
+    padding: 3px;
+    font-size: small;
 }
 
 .home-lista-cortes ul li div p {
@@ -418,6 +419,32 @@ video source {
     background-color: var(--color-revert);
     border-radius: 8px;
     padding: 4px;
+}
+
+/* Modal */
+
+/* styles.css */
+.modal {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    z-index: 1000;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+}
+
+.overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 999;
 }
 
 /* Agendamentos.css */
@@ -495,6 +522,7 @@ video source {
     font-size: xx-large;
     width: 180px;
     box-shadow: 1px 1px 3px var(--sanduiche);
+    cursor: pointer;
 }
 
 .lista-horarios-ag {
