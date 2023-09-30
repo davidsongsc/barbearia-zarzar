@@ -12,17 +12,8 @@ const Agendamentos: React.FC = () => {
     const [mostrarTodasAsSemanas, setMostrarTodasAsSemanas] = useState(false);
     const [agendamentos, setAgendamentos] = useState<string[][]>([]); // Array de agendamentos
     const [horariosIndisponiveis, setHorariosIndisponiveis] = useState<string[]>([]); // Horários indisponíveis
-    const [diaAtual, setDiaAtual] = useState(new Date()); // Obter a data atual
-    const [modalOpen, setModalOpen] = useState(false);
-    const openModal = () => {
-        setModalOpen(true);
-    };
 
-    const closeModal = () => {
-        setModalOpen(false);
-    };
-
-    const diasDaSemana = ['Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb', 'Dom'];
+    const diasDaSemana = ['Dom', 'Seg', 'Ter', 'Qua', 'Qui', 'Sex', 'Sáb'];
 
     // Função para gerar horários disponíveis
     const gerarHorarios = (diaAtual: Date) => {
@@ -30,7 +21,7 @@ const Agendamentos: React.FC = () => {
         const dataAtual = new Date(); // Obter a data e hora atual
         const diaDaSemana = diaAtual.getDay(); // Obtém o dia da semana (0 = Domingo, 1 = Segunda, ..., 6 = Sábado)
         const abertura = 9; // Hora de abertura padrão
-        const diaFolgaSemana = 0;
+        const diaFolgaSemana = 1;
         const fechamentoNormal = 21;
         const fechamentoSegunda = 12;
         const fechamento = (diaDaSemana === diaFolgaSemana) ? fechamentoSegunda : fechamentoNormal; // Hora de fechamento: 12h para domingo, 20h para outros dias
@@ -63,7 +54,7 @@ const Agendamentos: React.FC = () => {
 
                 if (horariosIndisponiveis.includes(horario)) {
                     disponibilidade = 'indisponivel'; // Marcar como indisponível se também estiver na lista de horários indisponíveis
-                } else if (diaDaSemana === 0) {
+                } else if (diaDaSemana === diaFolgaSemana) {
                     disponibilidade = 'ocupado'; // Segunda-feira: Marcar como ocupado
                 }
 
@@ -87,6 +78,7 @@ const Agendamentos: React.FC = () => {
 
 
     // Função para gerar os próximos dias
+    // Função para gerar os próximos dias
     const gerarProximosDias = () => {
         const dataAtual = new Date();
         const dias = [dataAtual];
@@ -97,8 +89,14 @@ const Agendamentos: React.FC = () => {
             dias.push(proximoDia);
         }
 
-        return dias;
+        // Certifique-se de que o dia atual seja sempre o primeiro da lista
+        return dias.sort((a, b) => a.getTime() - b.getTime());
     };
+
+
+    const listaDias = gerarProximosDias(); // Defina listaDias usando a função gerarProximosDias
+
+    const [diaAtual, setDiaAtual] = useState(listaDias[0]);
 
     // Função para agendar um horário em um dia específico
     const agendarHorario = (dia: Date, horario: string) => {
@@ -138,7 +136,7 @@ const Agendamentos: React.FC = () => {
             <div className="agendamento-pagina ">
                 <Tabs>
                     <TabList className='lista-horarios-ag'>
-                        {gerarProximosDias().map((dia, index) => (
+                        {listaDias.map((dia, index) => (
                             <Tab key={index}>{diasDaSemana[dia.getDay()]}</Tab>
                         ))}
                     </TabList>
@@ -157,7 +155,7 @@ const Agendamentos: React.FC = () => {
                         </TabPanel>
                     ))}
                 </Tabs>
-            </div>
+            </div >
         </>
     );
 };
