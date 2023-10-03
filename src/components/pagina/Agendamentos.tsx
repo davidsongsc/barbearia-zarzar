@@ -126,7 +126,7 @@ const Agendamentos: React.FC = () => {
 
     useEffect(() => {
         // Carregar os horários indisponíveis inicialmente (por exemplo, 13:00 e 13:30)
-        setHorariosIndisponiveis(['13:00', '13:30']);
+        setHorariosIndisponiveis(['09:00', '09:30', '13:00', '13:30']);
     }, []);
 
     return (
